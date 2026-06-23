@@ -1,0 +1,23 @@
+.promo-card {
+  width: 320px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.promo-card__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.promo-card__description {
+  margin: 10px 0 12px;
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+}
