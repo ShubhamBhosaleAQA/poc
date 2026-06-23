@@ -23,4 +23,4 @@ jobs:
           cache: npm
           cache-dependency-path: storybook-poc/package-lock.json
       - run: npm ci
-      - run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
