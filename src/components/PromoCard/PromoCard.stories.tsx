@@ -9,6 +9,9 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  argTypes: {
+    color: { control: 'color', description: 'Optional card background color' },
+  },
   args: {
     title: 'Try premium plan',
     description: 'Unlock advanced analytics and unlimited dashboards for your team.',
@@ -36,5 +39,11 @@ export const FullWidthCta: Story = {
   },
   parameters: {
     layout: 'padded',
+  },
+};
+
+export const CustomBackground: Story = {
+  args: {
+    color: '#f0f7ff',
   },
 };
