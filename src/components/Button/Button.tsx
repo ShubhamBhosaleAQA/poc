@@ -23,7 +23,7 @@ export const Button = ({
         border: 'none',
         cursor: 'pointer',
         borderRadius: 10,
-        backgroundColor: variant === 'primary' ? 'pink' : 'gray',
+        backgroundColor: variant === 'primary' ? 'yellow' : 'gray',
         margin: 10,
         color: color || 'black',
         alignSelf: 'flex-start',
