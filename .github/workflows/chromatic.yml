@@ -3,16 +3,10 @@ name: Chromatic
 on:
   pull_request:
     branches: [main]
-    paths:
-      - storybook-poc/**
-      - .github/workflows/chromatic.yml
 
 jobs:
   chromatic:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: storybook-poc
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,6 +15,6 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: storybook-poc/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npx chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN }} --exit-zero-on-changes
