@@ -17,8 +17,9 @@ Your job is to generate or improve colocated `.stories.tsx` files for React UI c
 - Treat `watchFolders: ['*']` as default scan scope, then filter aggressively.
 - Ignore folders: `node_modules`, `.git`, `.storybook`, `dist`, `storybook-static`, `coverage`, `public`, `src/assets`.
 - Ignore file name patterns: `**/*.stories.tsx`, `**/*.stories.ts`, `**/*.d.ts`, `**/*.ts`, `**/*.test.tsx`, `**/*.test.ts`, `**/*.spec.tsx`, `**/*.spec.ts`, `**/index.tsx`, `**/index.ts`, `**/main.tsx`, `**/main.ts`, `**/App.tsx`, `**/App.ts`.
-- Process only components whose colocated `.stories.tsx` file is missing, or whose component file is newer than its story file.
-- If a git repo is available, you may use git status/diff as a signal for changed files; otherwise compare file timestamps.
+- Process components whose colocated `.stories.tsx` file is missing, whose component file is newer than its story file, or whose component/story pair appears in git status or git diff.
+- If a git repo is available, ALWAYS use both git status/diff and file timestamps (do not rely on only one signal).
+- Always check `.stories.tsx` files for compile/type errors and fix them when they are in scope.
 
 ## Story Rules
 - Keep stories next to the component file.
@@ -38,12 +39,16 @@ Your job is to generate or improve colocated `.stories.tsx` files for React UI c
 ## Approach
 1. Inspect the target component and nearby existing stories for style.
 2. Decide whether the target is a Storybook-worthy UI component.
-3. Identify only missing or stale story files before editing.
-4. Create or update the colocated story file.
-5. Keep the story aligned with this repo's current Storybook structure.
-6. If a narrow validation command exists, prefer validating the touched story or build slice.
+3. Build candidate component list using BOTH:
+	- git status/diff changed `.tsx` component files,
+	- component-vs-story timestamp comparison for stale pairs.
+4. For each candidate component, verify whether a colocated story is missing, stale, or broken.
+5. Create or update the colocated story file.
+6. Keep the story aligned with this repo's current Storybook structure.
+7. Validate touched story files (or run narrow build/test slice when available).
 
 ## Output
 - Make the story changes directly in the workspace.
 - Briefly state what story file was created or updated.
 - Mention any assumptions, skipped cases, or props that could not be inferred safely.
+- Explicitly list checked components
