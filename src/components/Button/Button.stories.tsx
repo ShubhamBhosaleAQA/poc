@@ -37,3 +37,24 @@ export const CustomColor: Story = {
     children: 'Custom Color Button',
   },
 };
+
+export const Secondary: Story = {
+  args: {
+    variant: 'secondary',
+    children: 'Secondary Button',
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: 'lg',
+    children: 'Large Button',
+  },
+};
+
+export const FullWidth: Story = {
+  args: {
+    fullWidth: true,
+    children: 'Full Width Button',
+  },
+};
